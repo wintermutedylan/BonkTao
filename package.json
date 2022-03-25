@@ -1,0 +1,22 @@
+{
+  "name": "BonkTao",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.13.1"
+  },
+  "description": "Bot for the HTC Slap stuff",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "Blakninja",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.8.2",
+    "discord.js": "^13.4.0",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "lucky-item": "^2.0.2",
+    "mongoose": "^6.1.4"
+  }
+}
