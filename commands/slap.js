@@ -146,22 +146,26 @@ module.exports = {
             }
 
         }
+        
         let slapCount = 0;
+        let slapData = await slapModel.findOne({ userID: message.author.id });
 
-        for (let i = 0; i < playerData.slappedBy.length; i++) {
-            slapCount = slapCount + playerData.slappedBy[i].count;
+        for (let i = 0; i < slapData.slappedBy.length; i++) {
+            slapCount = slapCount + slapData.slappedBy[i].count;
             
         }
         
 
-        let slappedByCount;
-        for (let j = 0; j < playerData2.usersSlapped.length; j++){
-            if (playerData2.usersSlapped[j].user === person.user.id){
-                slappedByCount = playerData2.usersSlapped[j].count;
+        let slappedByCount = 0;
+        for (let j = 0; j < slapData.usersSlapped.length; j++){
+            if (slapData.usersSlapped[j].user === person.user.id){
+                slappedByCount = slapData.usersSlapped[j].count;
 
             }
         }
         let gifImage = lucky.item(gifURLs);
+        
+        
 
         const newEmbed = new Discord.MessageEmbed()
             .setColor('#BE0000')

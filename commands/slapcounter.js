@@ -38,7 +38,7 @@ module.exports = {
 
         const newEmbed = new Discord.MessageEmbed()
         .setColor('#BE0000')
-        .setAuthor(`${personUsername} slap counter`)
+        .setAuthor(`${personUsername}'s slap counter`)
         .setTitle(`${personUsername} has been slapped ${slapCount} times by the following people:`)
         .setDescription(slapString);
         
