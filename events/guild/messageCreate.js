@@ -1,5 +1,6 @@
 require('dotenv').config();
 const slapModel = require("../../models/slapModel");
+const { userMention, memberNicknameMention, channelMention, roleMention } = require('@discordjs/builders');
 
 module.exports = async (Discord, client, message) => {
     const prefix = process.env.PREFIX;
@@ -14,6 +15,7 @@ module.exports = async (Discord, client, message) => {
     if (!command) {
         return message.channel.send("This command doesn't exist!");
     }
+    if (message.channel.id != "959060872230219776") return message.reply(`Please only use this bot in ${channelMention("959060872230219776")}`)
     let profileData;
     
     try{
@@ -22,7 +24,10 @@ module.exports = async (Discord, client, message) => {
             let profile = await slapModel.create({
                 userID: message.author.id,
                 usersSlapped: [],
-                slappedBy: []
+                slappedBy: [],
+                slapCount: 0,
+                alBlueSlaps: 0,
+                slapCD: 1641854534523
             });
             profile.save();
         }

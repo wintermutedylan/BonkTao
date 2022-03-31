@@ -21,26 +21,27 @@ module.exports = {
         
         
 
-        let playerData = await slapModel.findOne({ userID: message.author.id });
+        let playerData = await slapModel.findOne({ userID: personID });
+        
         if (!playerData) return `User doesn't exist`;
+        let allBlueSlaps = playerData.alBlueSlaps; //499257085159276544
 
         let slapString = "";
         for (let i = 0; i < playerData.slappedBy.length; i++){
             slapString = slapString + `${userMention(playerData.slappedBy[i].user)}: ${playerData.slappedBy[i].count} \n`;
 
         }
-        let slapCount = 0;
+        
 
-        for (let i = 0; i < playerData.slappedBy.length; i++) {
-            slapCount = slapCount + playerData.slappedBy[i].count;
-            
-        }
+        let slapCountData = playerData.slapCount;
+
+        
 
         const newEmbed = new Discord.MessageEmbed()
         .setColor('#BE0000')
         .setAuthor(`${personUsername}'s slap counter`)
-        .setTitle(`${personUsername} has been slapped ${slapCount} times by the following people:`)
-        .setDescription(slapString);
+        .setTitle(`${personUsername} has slapped **Alblue** ${allBlueSlaps} total times`)
+        .setDescription(`${personUsername} has been slapped ${slapCountData} times by the following people:\n` + slapString);
         
 
 
